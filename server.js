@@ -9,10 +9,12 @@ const PORT = process.env.PORT || 5000;
 
 const router = require("./router");
 
+const URL = "https://chat-socket2.netlify.app";
+
 const app = express();
 app.use(
   cors({
-    origin: "https://chatting-socket1.netlify.app",
+    origin: URL,
     methods: ["GET", "POST"],
     credentials: true,
   })
@@ -21,7 +23,7 @@ const server = http.createServer(app);
 
 const io = socketio(server, {
   cors: {
-    origin: "https://chatting-socket1.netlify.app",
+    origin: URL,
     methods: ["GET", "POST"],
     credentials: true,
   },
